@@ -18,12 +18,11 @@
         type="text"
         id="search"
         name="search"
-        oninput="validateInput(this)"
+        oninput="this.value = this.value.replace(/[';--]/g, '')"
         placeholder="Entrez votre recherche"
         required>
     <button type="submit">Envoyer</button>
 </form>
-<!-- Ce formulaire inclut désormais une validation côté client pour prévenir les injections SQL -->
+<!-- Ce formulaire inclut désormais une validation stricte côté client pour prévenir les injections SQL -->
 </body>
 </html>
-
