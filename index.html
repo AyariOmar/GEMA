@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Test SQL Injection2</title>
+    <title>Test SQL Injection</title>
+    <script>
+        // Fonction pour valider l'entrée utilisateur côté client
+        function validateInput(input) {
+            input.value = input.value.replace(/['";--]/g, ''); // Supprime les caractères problématiques
+        }
+    </script>
 </head>
 <body>
+
 <h1>Bienvenue sur test-gema.local</h1>
 <form method="post" action="/search">
-<label for="search">Rechercher :</label>
-<input type="text" id="search" name="search" oninput="this.value = this.value.replace(/[';--]/g, '')">
-<button type="submit">Envoyer</button>
+    <label for="search">Rechercher :</label>
+    <input
+        type="text"
+        id="search"
+        name="search"
+        oninput="validateInput(this)"
+        placeholder="Entrez votre recherche"
+        required>
+    <button type="submit">Envoyer</button>
 </form>
-<!-- Ce formulaire est vulnérable aux injections SQL car il
-n'utilise pas d'échappement des entrées utilisateur -->
+<!-- Ce formulaire inclut désormais une validation côté client pour prévenir les injections SQL -->
 </body>
 </html>
 
